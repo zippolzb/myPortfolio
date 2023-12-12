@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      />
+      <link rel="stylesheet" href="{% static 'curriculum/porrito.css' %}" />
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+    <title>Julián Martinez's CV</title>
+  </head>
+
+
+<body>
+{% if job_list %}
+<div id="Experience" class="container">
+  <!-- Content for Section 2 -->
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        src="{% static 'curriculum/images/profile.png' %}"
+        alt="Profile Image"
+        class="img-fluid rounded-circle toggle-item defaul_pic"
+        id="item0"
+      />
+      {% for job in job_list %}
+      <img
+        src="{{ job.job_image.url }}"
+        alt="Profile Image"
+        class="img-fluid rounded-circle toggle-item job_inactive"
+        id="item{{ job.id }}"
+      />
+      {% endfor %}
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <ul id="jobs_description">
+          {% for job in job_list %}
+          <li class="clickable" id="item{{job.id}}">
+            {{job.job_title}} - {{job.location}} - {{job.start_date|date:"b Y"}}
+            up to {{job.end_date|date:"b Y"}}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="row">
+        {% for job in job_list %}
+        <div id="item{{ job.id }}" class="toggle-item job_inactive">
+          <div class="container">
+            <h3>{{ job.job_position}}</h3>
+            <p>{{ job.job_description}}</p>
+            <p>{{ job.job_tools }}</p>
+          </div>
+        </div>
+            {% endfor %}</p>
+{% else %}
+<p>No polls available</p>
+{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // Smooth scrolling when a navigation link is clicked
+    $('a.nav-link').on('click', function(e) {
+      e.preventDefault();
+      var target = $(this).data('target');
+      $('html, body').animate({
+        scrollTop: $(target).offset().top
+      }, 800);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.clickable').click(function() {
+      var itemId = $(this).attr('id');
+
+      // Toggle the "active" class on elements with the class "toggle-item" and the same ID
+      $('.toggle-item[id="' + itemId + '"]').toggleClass('job_inactive');
+    });
+  });
+
+  $(document).ready(function() {
+    $('.clickable').click(function(e) {
+      // Hide all other items in the same ul
+      $(this).siblings().toggleClass('job_inactive');
+      $('.defaul_pic').addClass('job_inactive');
+      // Prevent the click event from bubbling up to the document
+      e.stopPropagation();
+    });
+
+    // Click anywhere outside the list to show all items again
+    $(document).click(function() {
+      $('.clickable').removeClass('job_inactive');
+      $('.toggle-item').addClass('job_inactive');
+      $('.defaul_pic').removeClass('job_inactive');
+    });
+  });
+</body>
+</script>

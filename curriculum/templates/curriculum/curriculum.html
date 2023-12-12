@@ -1,0 +1,191 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      />
+    <link rel="stylesheet" href="{% static 'curriculum/style.css' %}" />
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+    <title>Julián Martinez's CV</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="http://127.0.0.1:8000/">
+        <img
+          src="{% static 'curriculum/images/logo.png' %}"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="Your Icon"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://127.0.0.1:8000/" data-target="#About_Me" data-prefix="01. ">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-target="#Experience" data-prefix="02. "
+              >Experience</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Portfolio" data-prefix="03. "
+              >Portfolio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Contact" data-prefix="04. ">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div id="About_Me" class="container">
+      <!-- Content for Section 1 -->
+      <div class="row">
+        <div class="col-md-4">
+          <img
+            src="{% static 'curriculum/images/profile2.png' %}"
+            alt="Profile Image"
+            class="img-fluid rounded-circle"
+          />
+        </div>
+        <div class="col-md-8">
+          <!-- New row added for the name message -->
+          <div class="row">
+            <div class="col-md-12">
+              <p class="small-message">Hi, my name is</p>
+            </div>
+          </div>
+          <!-- Added offset-md-3 to center the column and create a margin on the left -->
+          <h1 id="light_blue">Julian Martinez.</h1>
+          <h1 id="dark_blue">I solve digital problems.</h1>
+          <p>
+            I am a passionate developer with several years of expertise in several roles and thecnologies. I've spent the last years working as developer and devops, wich gives me an insight of the whole development process. I like to take new challenges and find useful solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="Experience" class="container">
+      <!-- Content for Section 2 -->
+      <!-- Content for Section 1 -->
+      <div class="row">
+        <div class="col-md-4">
+          <img
+            src="{% static 'curriculum/images/profile.png' %}"
+            alt="Profile Image"
+            class="img-fluid rounded-circle toggle-item defaul_pic"
+            id="item1"
+          />
+          <img
+            src="{% static 'curriculum/images/redlink.jpg' %}"
+            alt="Profile Image"
+            class="img-fluid rounded-circle toggle-item job_inactive"
+            id="item1"
+          />
+          <img
+            src="{% static 'curriculum/images/accenture-logo-1.png' %}"
+            alt="Profile Image"
+            class="img-fluid rounded-circle toggle-item job_inactive"
+            id="item2"
+          />
+        </div>
+
+        <div class="col-md-8">
+          <div class="row">
+            <ul id="jobs_description">
+              <li class="clickable" id="item1">RedLink S.A. - Argentina - Sep 17 to Dec 23</li>
+              <li class="clickable" id="item2">Accentur S.R.L - Argentina- Jan 15 to Sep 17</li>
+              <li class="clickable" id="item3">Item 3</li>
+              <li class="clickable" id="item4">Item 4</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div id="item1" class="toggle-item job_inactive">
+              <div class="container">
+                <h3>DevOps and SSr Automation and Monitoring Analyst</h3>
+                <p>Mi tarea es realizar todo tipo de procesos automatizados dentro de la empresa, por medio de la utilización de scripts en múltiples lenguajes y herramientas.</p>
+                <p>Tools: Jenkins || Git || Ansible || vRealize Automation || Red Hat Virtualization Manager || Python || BMC Atrium Orchestrator (BAO) || Powershell</p>
+
+              </div>
+            </div>
+            <div id="item2" class="toggle-item job_inactive">Content for Item 2</div>
+            <div id="item3" class="toggle-item job_inactive">Content for Item 3</div>
+            <div id="item4" class="toggle-item job_inactive">Content for Item 4</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+    <div id="Portfolio" class="container">
+      <!-- Content for Section 3 -->
+    </div>
+
+    <div id="Contact" class="container">
+      <!-- Content for Section 4 -->
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function() {
+      // Smooth scrolling when a navigation link is clicked
+      $('a.nav-link').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this).data('target');
+        $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 800);
+      });
+    });
+
+    $(document).ready(function() {
+      $('.clickable').click(function() {
+        var itemId = $(this).attr('id');
+  
+        // Toggle the "active" class on elements with the class "toggle-item" and the same ID
+        $('.toggle-item[id="' + itemId + '"]').toggleClass('job_inactive');
+      });
+    });
+
+    $(document).ready(function() {
+      $('.clickable').click(function(e) {
+        // Hide all other items in the same ul
+        $(this).siblings().toggleClass('job_inactive');
+        $('.defaul_pic').addClass('job_inactive');
+        // Prevent the click event from bubbling up to the document
+        e.stopPropagation();
+      });
+  
+      // Click anywhere outside the list to show all items again
+      $(document).click(function() {
+        $('.clickable').removeClass('job_inactive');
+        $('.toggle-item').addClass('job_inactive');
+        $('.defaul_pic').removeClass('job_inactive');
+      });
+    });
+    
+  </script>
+
+</html>

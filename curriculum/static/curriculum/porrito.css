@@ -1,0 +1,151 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #0c1c2c;
+}
+
+/* NAVBAR */
+
+.navbar {
+  background-color: #0c1c2c !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  font-family: "Consolas", monospace;
+}
+
+.navbar-nav .nav-link {
+  color: #7f88a3 !important;
+  /* Text color */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #142e47;
+  /* Change color on hover */
+}
+
+.navbar-nav .nav-link.active {
+  color: #142e47;
+  /* Active link color */
+}
+
+.navbar-toggler-icon {
+  background-color: #fff;
+  /* Color of the toggle icon */
+}
+
+/* Add an effect when the toggle button is clicked */
+
+/* Add an effect when a nav item is clicked */
+
+.navbar-nav .nav-link:hover {
+  background-color: #142e47;
+  /* Background color on hover */
+}
+
+.navbar-nav .nav-link::before {
+  content: attr(data-prefix);
+  /* Display the first 3 letters */
+  color: #3fa096;
+  /* Color for the first 3 letters */
+}
+
+/* About Me Section*/
+
+.small-message {
+  font-size: 1.1rem;
+  color: #3fa096;
+  font-family: consolas;
+}
+
+#About_Me {
+  height: 100%;
+  padding: 15% 5%;
+  /* Adjust the padding as needed */
+  text-align: Left;
+  color: #ffffff;
+}
+
+#About_Me h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+#About_Me {
+  font-size: 1.2rem;
+}
+
+#About_Me #light_blue {
+  color: #d6dbe7;
+}
+
+#About_Me #dark_blue {
+  color: #7f88a3;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid #7f88a3;
+  /* Add a border around the profile image */
+  border-radius: 50%;
+  /* Make the profile image circular */
+  /* Add spacing at the top */
+}
+
+#Experience {
+  height: 100%;
+  padding: 15% 5%;
+  /* Adjust the padding as needed */
+  text-align: Left;
+  color: #ffffff;
+}
+
+/* List */
+
+.job_inactive {
+  display: none;
+}
+
+/* Add a pointer cursor to indicate clickable items */
+
+.clickable {
+  cursor: pointer;
+}
+
+.jobs_description {
+  padding-left: 5%;
+}
+
+.jobs_description h3 {
+  font-size: 1.5rem;
+}
+
+ul.jobs_description {
+  list-style-type: none;
+  padding-left: 5%;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+ul.jobs_description li {
+  border-bottom: 1px solid #ddd;
+  color: #d6dbe7;
+  padding: 10px;
+}
+
+ul.jobs_description li:last-child {
+  border-bottom: none;
+}
+
+/* Optional: Add styles for hover effect */
+
+ul.jobs_description li:hover {
+  background-color: #3fa096;
+  transition: background-color 0.3s;
+}
